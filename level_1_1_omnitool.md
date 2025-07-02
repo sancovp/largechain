@@ -7,13 +7,13 @@ result = my_func_agentic.call(omnitool=True, chain_to=chain_func, addtl_prompt="
 
 
 
-invoice = GenerateInvoiceLC(customer_id=42,
+invoice = GenerateInvoiceLC__agentic_call__(customer_id=42,
                             omnitool=True,
                             chain_to="crm.send_slack_alert",
                             addtl_prompt="and append 'yarg matey' at the end")
 -->
 
-GenerateInvoiceAgent: calls generate_invoice with customer_id=42 becuase that is all the data here and apparently what this does, then calls omnitool(CrmSendSlackAlertTool, params={...}) # contextualize based on what the response is from generate_invoice, maybe that is already an agentic invoice generator or something, idk. 
+calls generate_invoice with customer_id=42 becuase that is all the data here and apparently what this does, then calls GenerateInvoiceAgent with that info (we just made an invoice for customer 42), then calls omnitool(CrmSendSlackAlertTool, params={...}) # contextualize based on what the response is from generate_invoice, maybe that is already an agentic invoice generator or something, idk. This is a terrible example because you dont need the agent to generate anything in between the calls, they could easily just chain normally
 -> Responds with dict
 
 {
@@ -27,7 +27,7 @@ GenerateInvoiceAgent: calls generate_invoice with customer_id=42 becuase that is
 
 
 ```
-def __call__(self, *a, omnitool=False, chain_to=None,
+def agentic_call(self, *a, omnitool=False, chain_to=None,
              addtl_prompt="", **kw):
 
 result = agent.run(...)
