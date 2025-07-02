@@ -23,3 +23,17 @@ GenerateInvoiceAgent: calls generate_invoice with customer_id=42 becuase that is
 "error": maybe_error
 
 }
+
+
+
+```
+def __call__(self, *a, omnitool=False, chain_to=None,
+             addtl_prompt="", **kw):
+
+result = agent.run(...)
+trace = tracer.create(result)
+return trace.map()
+```
+
+
+you dont call omnitool, the agent HAS omnitool and automatically just chains the context because it gets output of its own function and then calls the next one(s), then trace gathers them and trace.map maps them into result pkg, we can even remove that like as above
