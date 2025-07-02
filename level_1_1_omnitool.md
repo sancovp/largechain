@@ -27,7 +27,7 @@ calls generate_invoice with customer_id=42 becuase that is all the data here and
 
 
 ```
-def agentic_call(self, *a, omnitool=False, chain_to=None,
+def fill(self, *a, omnitool=False, chain_to=None,
              addtl_prompt="", **kw):
 
 result = agent.run(...)
