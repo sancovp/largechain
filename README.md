@@ -356,13 +356,14 @@ A: Our meta-creation agents can build it for you. Just try to `pip install` it -
 **Q: How does the MCP integration work?**  
 A: Install our MCP and any AI platform (Claude, ChatGPT, etc.) gets access to your LARGE CHAIN systems. Your AI assistant becomes an omnipotent system administrator.
 
-
+NOTE: 
+```
 you could even enable omnitool on all your functions:
 
 chain_func = "< whatever >"
 args = {...}
 result = my_func_agentic.call(omnitool=True, chain_to=chain_func, addtl_prompt="and also say yarg matey after you finish", **args)
-
+```
 ---
 
 *Transform any function into AI. Build self-improving software. Program reality through imagination.*
